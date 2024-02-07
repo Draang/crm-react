@@ -3,6 +3,7 @@ import Cliente from "../components/Cliente";
 import { getClientes } from "../api/clientes";
 /* 
 cuando el componente cargue en react router
+error boundrie son componenetes que obtienen los errores en cualquier lugar
 */
 export function loader() {
   const clientes = getClientes();

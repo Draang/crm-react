@@ -1,8 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import Layout from "./components/Layout";
-import NuevoCliente,{accion as nuevoClienteAction} from "./pages/NuevoCliente";
+import NuevoCliente, {
+  accion as nuevoClienteAction,
+} from "./pages/NuevoCliente";
 import Index, { loader as indexLoader } from "./pages";
+import ErrorPage from "./components/ErrorPage";
 import "./index.css";
 /* permite crear rutas por medio de un objeto */
 /* centro de la aplicacion */
@@ -12,8 +15,17 @@ const router = createBrowserRouter([
     path: "/",
     element: <Layout />,
     children: [
-      { index: true, element: <Index />, loader: indexLoader },
-      { path: "/clientes/nuevo", element: <NuevoCliente /> , action:nuevoClienteAction},
+      {
+        index: true,
+        element: <Index />,
+        loader: indexLoader,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: "/clientes/nuevo",
+        element: <NuevoCliente />,
+        action: nuevoClienteAction,
+      },
     ],
   },
 ]);
