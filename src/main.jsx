@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import Layout from "./components/Layout";
-import NuevoCliente from "./pages/NuevoCliente";
+import NuevoCliente,{accion as nuevoClienteAction} from "./pages/NuevoCliente";
 import Index, { loader as indexLoader } from "./pages";
 import "./index.css";
 /* permite crear rutas por medio de un objeto */
@@ -13,7 +13,7 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { index: true, element: <Index />, loader: indexLoader },
-      { path: "/clientes/nuevo", element: <NuevoCliente /> },
+      { path: "/clientes/nuevo", element: <NuevoCliente /> , action:nuevoClienteAction},
     ],
   },
 ]);
