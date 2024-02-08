@@ -7,7 +7,9 @@ export default function ErrorPage() {
         CMR - CLIENTES
       </h1>
       <p className="text-center">Hubo un Error</p>
-      <p className="text-center text-red-900 font-bold">{error.message}</p>
+      <p className="text-center text-red-900 font-bold">
+        {error.statusText || error.message}
+      </p>
     </div>
   );
 }

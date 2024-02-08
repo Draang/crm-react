@@ -6,6 +6,9 @@ import NuevoCliente, {
 } from "./pages/NuevoCliente";
 import Index, { loader as indexLoader } from "./pages";
 import ErrorPage from "./components/ErrorPage";
+import EditarCliente, {
+  loader as editarLoader, action as editarAction
+} from "./components/EditarCliente";
 import "./index.css";
 /* permite crear rutas por medio de un objeto */
 /* centro de la aplicacion */
@@ -25,6 +28,15 @@ const router = createBrowserRouter([
         path: "/clientes/nuevo",
         element: <NuevoCliente />,
         action: nuevoClienteAction,
+        errorElement: <ErrorPage />,
+      },
+      /*routing dinamico */ {
+        path: "/clientes/:id/editar",
+        element: <EditarCliente />,
+        loader: editarLoader,
+        action:editarAction,
+        errorElement: <ErrorPage />,
+
       },
     ],
   },

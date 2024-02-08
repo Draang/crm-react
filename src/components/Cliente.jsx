@@ -1,6 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
+
 export default function Cliente({ cliente }) {
   const { id, nombre, telefono, email, empresa } = cliente;
+  const navigate = useNavigate();
   return (
     <tr>
       <td className="p-6 pl-10 space-y-2">
@@ -21,6 +24,7 @@ export default function Cliente({ cliente }) {
         <button
           type="button"
           className="text-blue-600 hover:text-blue-700 font-bold"
+          onClick={() => navigate(`/clientes/${id}/editar`)}
         >
           Editar
         </button>
