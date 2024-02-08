@@ -12,6 +12,7 @@ export async function setCliente(datos) {
       mode: "no-cors",
     });
     const res = await req.json();
+    return res
   } catch (e) {
     console.error(e);
   }
@@ -27,7 +28,19 @@ export async function updateCliente(id, datos) {
     const req = await fetch(`${import.meta.env.VITE_API_URL}/${id}`, {
       method: "PUT",
       body: JSON.stringify(datos),
-      headers: { "Contente-Type": "application/json" }
+      headers: { "Contente-Type": "application/json" },
+    });
+    const res = await req.json();
+    return res;
+  } catch (e) {
+    console.error(e);
+  }
+}
+export async function deleteCliente(id) {
+  console.log("eliminando...");
+  try {
+    const req = await fetch(`${import.meta.env.VITE_API_URL}/${id}`, {
+      method: "DELETE",
     });
     const res = await req.json();
     return res;

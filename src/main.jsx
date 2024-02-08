@@ -5,9 +5,11 @@ import NuevoCliente, {
   accion as nuevoClienteAction,
 } from "./pages/NuevoCliente";
 import Index, { loader as indexLoader } from "./pages";
+import { action as eliminarAction } from "./components/Cliente";
 import ErrorPage from "./components/ErrorPage";
 import EditarCliente, {
-  loader as editarLoader, action as editarAction
+  loader as editarLoader,
+  action as editarAction,
 } from "./components/EditarCliente";
 import "./index.css";
 /* permite crear rutas por medio de un objeto */
@@ -34,10 +36,10 @@ const router = createBrowserRouter([
         path: "/clientes/:id/editar",
         element: <EditarCliente />,
         loader: editarLoader,
-        action:editarAction,
+        action: editarAction,
         errorElement: <ErrorPage />,
-
       },
+      { path: "/clientes/:id/eliminar", action: eliminarAction },
     ],
   },
 ]);

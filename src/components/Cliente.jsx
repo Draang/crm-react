@@ -1,6 +1,10 @@
-import { useNavigate } from "react-router-dom";
+import { Form, useNavigate, redirect } from "react-router-dom";
 import PropTypes from "prop-types";
-
+import { deleteCliente } from "../api/clientes";
+export async function action({ params }) {
+  await deleteCliente(params.id);
+  return redirect("/");
+}
 export default function Cliente({ cliente }) {
   const { id, nombre, telefono, email, empresa } = cliente;
   const navigate = useNavigate();
@@ -28,12 +32,22 @@ export default function Cliente({ cliente }) {
         >
           Editar
         </button>
-        <button
-          type="button"
-          className="text-red-600 hover:text-red-700 font-bold"
+        <Form
+          method="post"
+          action={`/clientes/${id}/eliminar`}
+          onSubmit={(e) => {
+            if (!confirm("Deseas eliminar este registro?")) {
+              e.preventDefault(); /* Previene la accion */
+            }
+          }}
         >
-          Eliminar
-        </button>
+          <button
+            type="submit"
+            className="text-red-600 hover:text-red-700 font-bold"
+          >
+            Eliminar
+          </button>
+        </Form>
       </td>
     </tr>
   );
